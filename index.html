@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Product Landing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    header {
+      background-color: #1e1e1e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: white;
+    }
+    .hero img {
+      max-width: 300px;
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 20px 0 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .input-section {
+      margin: 30px 0;
+    }
+    .input-section input {
+      padding: 10px;
+      width: 60%;
+      max-width: 300px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .input-section button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      margin-left: 10px;
+      border: none;
+      background-color: #00bcd4;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+      background-color: #eee;
+    }
+    .feature {
+      flex: 1 1 250px;
+      max-width: 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    .cta {
+      text-align: center;
+      padding: 30px;
+      background: #1e1e1e;
+      color: white;
+    }
+    .cta button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .product-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background-color: #fff;
+    }
+    .product-card {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .product-card h3 {
+      margin-bottom: 10px;
+    }
+    .product-card img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .input-section input {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+      .input-section button {
+        margin-left: 0;
+        width: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Smart Product Landing</h2>
+  </header>
+
+  <div class="hero">
+    <img src="https://via.placeholder.com/300" alt="Smart Product Image">
+    <h1 id="productTitle">Your Smart Future</h1>
+    <p id="productTagline">Enter your product name below to generate a tagline</p>
+
+    <div class="input-section">
+      <input type="text" id="productInput" placeholder="Enter product name...">
+      <button onclick="generateTagline()">Generate</button>
+    </div>
+  </div>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Fast & Efficient</h3>
+      <p>Optimized for performance and battery life.</p>
+    </div>
+    <div class="feature">
+      <h3>Modern Design</h3>
+      <p>Crafted for elegance and style.</p>
+    </div>
+    <div class="feature">
+      <h3>Universal Access</h3>
+      <p>Works with all your favorite devices.</p>
+    </div>
+  </section>
+
+  <section class="product-cards" id="productCards">
+    <!-- Product cards will be added here -->
+  </section>
+
+  <div class="cta">
+    <h2>Ready to Upgrade?</h2>
+    <button onclick="buyNow()">Buy Now</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Smart Product Co. | Designed by Muhammad Irfan
+  </footer>
+
+  <script>
+    function generateTagline() {
+      const input = document.getElementById('productInput').value.trim();
+      const title = document.getElementById('productTitle');
+      const tagline = document.getElementById('productTagline');
+      const cards = document.getElementById('productCards');
+
+      if (input) {
+        title.innerText = input;
+        tagline.innerText = `Experience the power of ${input} – Smart living starts here!`;
+
+        // Create product card with generated image
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        const imageUrl = `https://via.placeholder.com/200x150?text=${encodeURIComponent(input)}`;
+
+        card.innerHTML = `
+          <img src="${imageUrl}" alt="${input}">
+          <h3>${input}</h3>
+          <p>Smart solution for your needs.</p>
+        `;
+        cards.appendChild(card);
+      } else {
+        alert("Please enter a product name.");
+      }
+    }
+
+    function buyNow() {
+      alert("Thanks for showing interest! We will reach out soon.");
+    }
+  </script>
+</body>
+</html>
